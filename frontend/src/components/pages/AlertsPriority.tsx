@@ -12,7 +12,7 @@ import {
   Legend
 } from 'recharts';
 import { useEffect, useState } from 'react';
-import { FilterState } from '../../App';
+import { type FilterState } from '../../App';
 import { AlertCircle } from 'lucide-react';
 
 interface AlertsPriorityProps {
@@ -121,13 +121,12 @@ export function AlertsPriority({ filters }: AlertsPriorityProps) {
                   </td>
                   <td className="py-3 px-4">
                     <span
-                      className={`text-xs px-2.5 py-1 rounded font-medium ${
-                        alert.severity === 'Critical'
+                      className={`text-xs px-2.5 py-1 rounded font-medium ${alert.severity === 'Critical'
                           ? 'bg-red-100 text-red-800'
                           : alert.severity === 'High'
-                          ? 'bg-orange-100 text-orange-800'
-                          : 'bg-yellow-100 text-yellow-800'
-                      }`}
+                            ? 'bg-orange-100 text-orange-800'
+                            : 'bg-yellow-100 text-yellow-800'
+                        }`}
                     >
                       {alert.severity}
                     </span>

@@ -8,7 +8,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import { useEffect, useState } from 'react';
-import { FilterState } from '../../App';
+import { type FilterState } from '../../App';
 import { IndiaMap } from '../IndiaMap';
 
 interface AadhaarStressIndexProps {
@@ -29,18 +29,18 @@ export function AadhaarStressIndex({ filters }: AadhaarStressIndexProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  fetch("http://127.0.0.1:8000/metrics/asi")
-    .then(res => res.json())
-    .then(data => {
-      console.log("ASI DATA RECEIVED:", data);
-      setAsiData(data);
-      setLoading(false);
-    })
-    .catch(err => {
-      console.error("ASI FETCH ERROR:", err);
-      setLoading(false);
-    });
-}, []);
+    fetch("http://127.0.0.1:8000/metrics/asi")
+      .then(res => res.json())
+      .then(data => {
+        console.log("ASI DATA RECEIVED:", data);
+        setAsiData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("ASI FETCH ERROR:", err);
+        setLoading(false);
+      });
+  }, []);
 
 
   if (loading) {
@@ -138,13 +138,12 @@ export function AadhaarStressIndex({ filters }: AadhaarStressIndexProps) {
                   </td>
                   <td className="py-3 px-4">
                     <span
-                      className={`text-xs px-2.5 py-1 rounded ${
-                        item.category === 'High'
+                      className={`text-xs px-2.5 py-1 rounded ${item.category === 'High'
                           ? 'bg-red-100 text-red-700'
                           : item.category === 'Medium'
-                          ? 'bg-yellow-100 text-yellow-700'
-                          : 'bg-green-100 text-green-700'
-                      }`}
+                            ? 'bg-yellow-100 text-yellow-700'
+                            : 'bg-green-100 text-green-700'
+                        }`}
                     >
                       {item.category}
                     </span>

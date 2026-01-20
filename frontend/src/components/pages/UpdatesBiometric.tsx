@@ -8,14 +8,14 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import { useEffect, useState } from 'react';
-import { FilterState } from '../../App';
+import { type FilterState } from '../../App';
 
 // ⏳ KEEP MOCK DATA for parts not yet backed by API
 import {
   biometricStressRegions,
   elderlyVulnerabilityData,
   biometricProblemRegions
-} from '../../../../data/mock/biometricData';
+} from '../../../data/mock/biometricData';
 
 interface UpdatesBiometricProps {
   filters: FilterState;
@@ -168,13 +168,12 @@ export function UpdatesBiometric({ filters }: UpdatesBiometricProps) {
                     </td>
                     <td className="py-2.5 px-3">
                       <span
-                        className={`text-xs px-2 py-0.5 rounded ${
-                          item.severity === 'High'
-                            ? 'bg-red-100 text-red-700'
-                            : item.severity === 'Medium'
+                        className={`text-xs px-2 py-0.5 rounded ${item.severity === 'High'
+                          ? 'bg-red-100 text-red-700'
+                          : item.severity === 'Medium'
                             ? 'bg-yellow-100 text-yellow-700'
                             : 'bg-green-100 text-green-700'
-                        }`}
+                          }`}
                       >
                         {item.severity}
                       </span>

@@ -10,10 +10,10 @@ import {
   Line
 } from 'recharts';
 import { useEffect, useState } from 'react';
-import { FilterState } from '../../App';
+import { type FilterState } from '../../App';
 
 // ⚠️ Keep mock ONLY for update frequency trend (backend later)
-import { updateFrequencyTrend } from '../../../../data/mock/migrationData';
+import { updateFrequencyTrend } from '../../../data/mock/migrationData';
 
 interface MigrationFreshnessProps {
   filters: FilterState;
@@ -137,8 +137,8 @@ export function MigrationFreshness({ filters }: MigrationFreshnessProps) {
                   item.migration_mismatch_percentage >= 20
                     ? 'High'
                     : item.migration_mismatch_percentage >= 10
-                    ? 'Medium'
-                    : 'Low';
+                      ? 'Medium'
+                      : 'Low';
 
                 return (
                   <tr
@@ -153,13 +153,12 @@ export function MigrationFreshness({ filters }: MigrationFreshnessProps) {
                     </td>
                     <td className="py-3 px-4">
                       <span
-                        className={`text-xs px-2.5 py-1 rounded ${
-                          severity === 'High'
-                            ? 'bg-red-100 text-red-700'
-                            : severity === 'Medium'
+                        className={`text-xs px-2.5 py-1 rounded ${severity === 'High'
+                          ? 'bg-red-100 text-red-700'
+                          : severity === 'Medium'
                             ? 'bg-yellow-100 text-yellow-700'
                             : 'bg-green-100 text-green-700'
-                        }`}
+                          }`}
                       >
                         {severity}
                       </span>

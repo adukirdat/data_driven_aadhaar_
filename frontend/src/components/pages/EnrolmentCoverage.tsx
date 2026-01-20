@@ -10,13 +10,13 @@ import {
   Line
 } from 'recharts';
 import { useEffect, useState } from 'react';
-import { FilterState } from '../../App';
+import { type FilterState } from '../../App';
 
 // ⏳ KEEP MOCK DATA
 import {
   ageWiseDistribution,
   lowCoverageRegions
-} from '../../../../data/mock/enrolmentData';
+} from '../../../data/mock/enrolmentData';
 
 interface EnrolmentCoverageProps {
   filters: FilterState;
@@ -164,13 +164,12 @@ export function EnrolmentCoverage({ filters }: EnrolmentCoverageProps) {
                       {item.coverageGap}%
                     </td>
                     <td className="py-2.5 px-3">
-                      <span className={`text-xs px-2 py-0.5 rounded ${
-                        item.risk === 'High'
-                          ? 'bg-red-100 text-red-700'
-                          : item.risk === 'Medium'
+                      <span className={`text-xs px-2 py-0.5 rounded ${item.risk === 'High'
+                        ? 'bg-red-100 text-red-700'
+                        : item.risk === 'Medium'
                           ? 'bg-yellow-100 text-yellow-700'
                           : 'bg-green-100 text-green-700'
-                      }`}>
+                        }`}>
                         {item.risk}
                       </span>
                     </td>
