@@ -1,5 +1,5 @@
 import { Home, AlertTriangle, Users, RefreshCw, Navigation, Bell } from 'lucide-react';
-import { PageType } from '../App';
+import { type PageType } from '../App';
 
 interface SidebarProps {
   currentPage: PageType;
@@ -29,7 +29,7 @@ export function Sidebar({ currentPage, onPageChange }: SidebarProps) {
           </div>
         </div>
       </div>
-      
+
       <nav className="flex-1 p-4">
         <ul className="space-y-1">
           {menuItems.map(item => {
@@ -39,11 +39,10 @@ export function Sidebar({ currentPage, onPageChange }: SidebarProps) {
               <li key={item.id}>
                 <button
                   onClick={() => onPageChange(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                    isActive
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${isActive
                       ? 'bg-blue-50 text-blue-700 font-medium'
                       : 'text-gray-700 hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   <Icon className={`w-5 h-5 ${isActive ? 'text-blue-700' : 'text-gray-500'}`} />
                   <span className="text-sm">{item.label}</span>
@@ -53,7 +52,7 @@ export function Sidebar({ currentPage, onPageChange }: SidebarProps) {
           })}
         </ul>
       </nav>
-      
+
       <div className="p-4 border-t border-gray-200">
         <p className="text-xs text-gray-500 text-center">
           Aadhaar Governance Monitoring Dashboard

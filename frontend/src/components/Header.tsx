@@ -1,5 +1,5 @@
 import { Calendar, MapPin } from 'lucide-react';
-import { FilterState } from '../App';
+import { type FilterState } from '../App';
 
 interface HeaderProps {
   filters: FilterState;
@@ -11,7 +11,7 @@ const timePeriods = [
 ];
 
 const states = [
-  'All States', 'Uttar Pradesh', 'Maharashtra', 'Bihar', 'West Bengal', 
+  'All States', 'Uttar Pradesh', 'Maharashtra', 'Bihar', 'West Bengal',
   'Madhya Pradesh', 'Tamil Nadu', 'Rajasthan', 'Karnataka', 'Gujarat'
 ];
 
@@ -23,7 +23,7 @@ export function Header({ filters, onFiltersChange }: HeaderProps) {
           <h2 className="text-lg font-semibold text-gray-900">Aadhaar Governance Monitoring Dashboard</h2>
           <p className="text-sm text-gray-600 mt-0.5">Real-time monitoring and decision support for Aadhaar administration</p>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gray-500" />
@@ -37,7 +37,7 @@ export function Header({ filters, onFiltersChange }: HeaderProps) {
               ))}
             </select>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-gray-500" />
             <select
