@@ -6,10 +6,13 @@ from app.services.enrolment_metrics import compute_child_enrolment_delay
 from app.services.biometric_metrics import compute_update_neglect
 from app.services.migration_metrics import compute_migration_mismatch
 from app.services.asi_metrics import compute_asi
+from app.services.overview_metrics import (
+    compute_overview_summary,
+    compute_top_priority_states
+)
 from app.routes import alerts
 
 app = FastAPI(title="Aadhaar Analytics Backend")
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,6 +26,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 app.include_router(alerts.router)
 
 @app.get("/")
@@ -48,3 +52,11 @@ def get_migration_mismatch():
 @app.get("/metrics/asi")
 def get_asi():
     return compute_asi()
+
+@app.get("/metrics/overview/summary")
+def get_overview_summary():
+    return compute_overview_summary()
+
+@app.get("/metrics/overview/priority-states")
+def get_priority_states():
+    return compute_top_priority_states()
